@@ -75,11 +75,7 @@ function filter_input() {
 
 function filter() {
     const date = document.getElementById("history-filter").value;
-    console.log('date', date);
-    $.post('http://127.0.0.1:8000/filter-history', {'date': date}, function (data, status) {
-        curr = data.data;
-        console.log("new data", curr);
-    });
+    window.location = `http://127.0.0.1:8000/filter-history/${date}`;
 }
 
 function equate() {

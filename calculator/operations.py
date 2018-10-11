@@ -11,7 +11,10 @@ def multiplication(first, second):
 
 
 def division(first, second):
-    return first / second
+    try:
+        return first / second
+    except ZeroDivisionError:
+        return 'Division by zero is invalid'
 
 
 def mod(first, second):

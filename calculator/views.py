@@ -16,6 +16,7 @@ def index(request):
 
 def history(request):
     data = Calculations.objects.all()
+    print("history data {}".format(data))
     return render(request, 'history.html', {'calculations': data})
 
 
@@ -24,8 +25,8 @@ def current_session(request):
     return render(request, 'history.html', {'calculations': data})
 
 
-def filter_history_by_date(request):
-    parsed_date = dateparse.parse_date(request.POST.get("date"))
+def filter_history_by_date(request, date):
+    parsed_date = dateparse.parse_date(date)
     data = Calculations.objects.filter(
         timestamp__year=parsed_date.year,
         timestamp__month=parsed_date.month,
@@ -50,10 +51,7 @@ def equate(request):
         elif oper == "%":
             ans = mod(operand1, operand2)
         elif oper == '/':
-            if operand2 != 0:
-                ans = division(operand1, operand2)
-            else:
-                ans = 'Division by zero is invalid'
+            ans = division(operand1, operand2)
 
         cal = Calculations(timestamp=timezone.now(), operand1=operand1, operator=oper, operand2=operand2, result=ans)
         cal.save()

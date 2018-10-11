@@ -24,6 +24,6 @@ urlpatterns = [
     url(r'^$', views.index),
     url(r'^history/', views.history),
     url(r'^current-history', views.current_session),
-    url(r'^filter-history', views.filter_history_by_date),
+    path('filter-history/<slug:date>', views.filter_history_by_date),
     url(r'^equate', views.equate)
 ]
