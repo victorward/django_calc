@@ -12,7 +12,7 @@
 </head>
 <body>
 <table>
-     {% csrf_token %}
+    {% csrf_token %}
     <tr>
         <td class="result" colspan="5"><span id="display"></td>
     </tr>
@@ -47,7 +47,8 @@
         <td></td>
     </tr>
 </table>
-<h4><a href="./history">Click here for the history of your calculations</h4><a></h4>
+<h4><a href="./history">Click here for the history of your calculations</a></h4>
+<h4><a href="./current-history">Click here for the history of your calculations from current session</a></h4>
     <script type="text/javascript" src="{% static 'script.js' %}"></script>
 </body>
 </html>

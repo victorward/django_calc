@@ -1,0 +1,37 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'history.css' %}"/>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+</head>
+<body>
+<span>Filter by Date (YYYY-MM-DD)</span>
+<input type="text" id="history-filter" onkeydown="filter_input()"/>
+<input type="button" value="Filter" onclick="filter()">
+<table>
+    <tr>
+        <th>Timestamp</th>
+        <th>Operand 1</th>
+        <th>Operator</th>
+        <th>Operand 2</th>
+        <th>Result</th>
+    </tr>
+    {% for calculation in calculations %}
+        <tr>
+            <td>{{ calculation.timestamp }}</td>
+            <td>{{ calculation.operand1 }}</td>
+            <td>{{ calculation.operator }}</td>
+            <td>{{ calculation.operand2 }}</td>
+            <td>{{ calculation.result }}</td>
+        </tr>
+    {% endfor %}
+</table>
+<script type="text/javascript" src="{% static 'script.js' %}"></script>
+</body>
+</html>
